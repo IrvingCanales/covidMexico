@@ -4,4 +4,4 @@
 Gráficas que muestra por estados el número de infectados y decesos por el COVID-19 en el país de México.
 
 ## APP
-App realizada con Vue.js
+App realizada con Vue.js http://covid.byrsoft.mx/
