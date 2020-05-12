@@ -1,17 +1,65 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">    
+    <Covid/>
+    <hr>
+    <span>Total personas confirmadas en el país: {{getConfirmados}}</span> <br>
+    <span>Total decesos en el país: {{getDecesos }}</span> <br>
+    <span>Tasa de letalidad en el país: {{ this.letalidad }} </span> <br>
+    <hr>
+    <br>
+    <br>
+      <span>Gráfica de personas confirmados positivos por estados 🤧 </span>
+
+    <Grafica v-if="getConfirmados>0" />
+    <br>
+      <span>Gráfica de decesos por estados 😞</span>
+      <Decesos v-if="getDecesos>0" />   
+    <Footer/>   
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Covid from './components/Covid'
+import Grafica from './components/Grafica'
+import Decesos from './components/Decesos'
+import Footer from './components/Footer'
+
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: 'App',
+  data(){
+    return{
+      datos: [],
+    }
+  },
   components: {
-    HelloWorld
+    Covid,
+    Grafica,
+    Decesos,
+    Footer
+  },
+  created(){
+    
+  },
+   async mounted() {
+      
+    await this.loadInfo();
+    
+  },
+
+  methods:{
+    ...mapActions(['loadInfo']),
+  },
+  computed:{
+    ...mapGetters(['getConfirmados','getDecesos','getFechas','getEstados']),
+
+    letalidad(){
+      let letalidad = (this.getDecesos/this.getConfirmados)*100
+          
+      return letalidad.toFixed(2)
+      
+    }
   }
 }
 </script>
@@ -25,4 +73,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>

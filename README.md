@@ -1,29 +1,7 @@
-# covid_mexico
+# Número de infectados en México🇲🇽 por el COVID-19 🦠
 
-## Project setup
-```
-npm install
-```
+## Descripción
+Gráficas que muestra por estados el número de infectados y decesos por el COVID-19 en el país de México.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## APP
+App realizada con Vue.js
